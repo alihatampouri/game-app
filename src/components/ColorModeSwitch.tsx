@@ -4,8 +4,6 @@ import { TbMoon, TbSun } from "react-icons/tb";
 const ColorModeSwitch = () => {
     const { toggleColorMode, colorMode } = useColorMode();
 
-    console.log(colorMode);
-
     return (
         <IconButton
             aria-label="Toggle color mode"
