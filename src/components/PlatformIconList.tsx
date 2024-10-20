@@ -6,12 +6,12 @@ import {
     FaWindows,
     FaXbox,
 } from "react-icons/fa";
-import { Platform } from "../types/game";
 import { HStack, Icon } from "@chakra-ui/react";
 import { SiNintendo } from "react-icons/si";
 import { MdPhoneIphone } from "react-icons/md";
 import { BsGlobe } from "react-icons/bs";
 import { IconType } from "react-icons";
+import { Platform } from "../types/platform";
 
 interface Props {
     platforms: Platform[];
