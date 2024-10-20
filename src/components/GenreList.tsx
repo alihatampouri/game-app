@@ -1,5 +1,6 @@
 import {
     Alert,
+    Button,
     HStack,
     Image,
     List,
@@ -9,8 +10,14 @@ import {
 } from "@chakra-ui/react";
 import useGenres from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/image-url";
+import { Genre } from "../types/genre";
 
-const GenreList = () => {
+interface Props {
+    selectedGenre: Genre | null;
+    onSelectGenre: (genre: Genre) => void;
+}
+
+const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
     const { data, error, isLoading } = useGenres();
 
     if (isLoading) {
@@ -38,7 +45,18 @@ const GenreList = () => {
                                 400
                             )}
                         />
-                        <Text fontSize="lg">{genre.name}</Text>
+                        <Button
+                            variant="link"
+                            fontWeight={
+                                genre.id === selectedGenre?.id
+                                    ? "bold"
+                                    : "normal"
+                            }
+                            fontSize="lg"
+                            onClick={() => onSelectGenre(genre)}
+                        >
+                            {genre.name}
+                        </Button>
                     </HStack>
                 </ListItem>
             ))}
