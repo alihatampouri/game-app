@@ -30,7 +30,7 @@ const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
         );
     }
 
-    if (error) return <Alert status="error">{error}</Alert>;
+    if (error) return <Alert status="error">{error.message}</Alert>;
 
     return (
         <>
@@ -38,7 +38,7 @@ const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
                 Genres
             </Heading>
             <List>
-                {data.map((genre) => (
+                {data?.results.map((genre) => (
                     <ListItem key={genre.id} paddingY="0.5rem">
                         <HStack>
                             <Image
