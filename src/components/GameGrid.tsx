@@ -5,6 +5,7 @@ import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
 import GameCardContainer from "./GameCardContainer";
 import { GameQuery } from "../types/game";
+import { InView } from "react-intersection-observer";
 
 interface Props {
     gameQuery: GameQuery;
@@ -47,13 +48,19 @@ const GameGrid = ({ gameQuery }: Props) => {
                       ))}
             </SimpleGrid>
             {hasNextPage && (
-                <Button
-                    width="100%"
-                    onClick={() => fetchNextPage()}
-                    disabled={isFetchingNextPage}
+                <InView
+                    onChange={(inView) => {
+                        if (inView) fetchNextPage();
+                    }}
                 >
-                    {isFetchingNextPage ? "Loading..." : "Load More"}
-                </Button>
+                    <Button
+                        width="100%"
+                        onClick={() => fetchNextPage()}
+                        disabled={isFetchingNextPage}
+                    >
+                        {isFetchingNextPage ? "Loading..." : "Load More"}
+                    </Button>
+                </InView>
             )}
         </>
     );
