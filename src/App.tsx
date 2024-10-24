@@ -33,9 +33,9 @@ function App() {
             <Show above="lg">
                 <GridItem area="aside" padding="2rem">
                     <GenreList
-                        selectedGenre={gameQuery.genre}
+                        selectedGenreId={gameQuery.genreId}
                         onSelectGenre={(genre) =>
-                            setGameQuery({ ...gameQuery, genre })
+                            setGameQuery({ ...gameQuery, genreId: genre.id })
                         }
                     />
                 </GridItem>
@@ -45,9 +45,12 @@ function App() {
                     <GameHeading gameQuery={gameQuery} />
                     <HStack marginBottom="1rem" spacing="1rem">
                         <PlatformFilter
-                            selectedPlatform={gameQuery.platform}
+                            selectedPlatformId={gameQuery.platformId}
                             onSelectPlatform={(platform) =>
-                                setGameQuery({ ...gameQuery, platform })
+                                setGameQuery({
+                                    ...gameQuery,
+                                    platformId: platform.id,
+                                })
                             }
                         />
                         <SortSelector

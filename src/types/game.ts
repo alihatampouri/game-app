@@ -1,4 +1,3 @@
-import { Genre } from "./genre";
 import { Platform } from "./platform";
 
 export interface Game {
@@ -11,8 +10,8 @@ export interface Game {
 }
 
 export interface GameQuery {
-    genre: Genre | null;
-    platform: Platform | null;
+    genreId?: number;
+    platformId?: number;
     sortOrder: string;
     searchText: string;
 }
