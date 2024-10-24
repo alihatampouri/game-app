@@ -5,9 +5,9 @@ import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
 import PlatformFilter from "./components/PlatformFilter";
 import { GameQuery } from "./types/game";
-import "./App.css";
 import SortSelector from "./components/SortSelector";
 import GameHeading from "./components/GameHeading";
+import "./App.css";
 
 function App() {
     const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
@@ -57,8 +57,8 @@ function App() {
                             }
                         />
                     </HStack>
+                    <GameGrid gameQuery={gameQuery} />
                 </Box>
-                <GameGrid gameQuery={gameQuery} />
             </GridItem>
         </Grid>
     );
