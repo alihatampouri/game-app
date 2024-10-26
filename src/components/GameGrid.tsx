@@ -1,17 +1,12 @@
-import React from "react";
 import { Alert, Button, SimpleGrid } from "@chakra-ui/react";
+import React from "react";
+import { InView } from "react-intersection-observer";
 import useGames from "../hooks/useGames";
 import GameCard from "./GameCard";
-import GameCardSkeleton from "./GameCardSkeleton";
 import GameCardContainer from "./GameCardContainer";
-import { GameQuery } from "../types/game";
-import { InView } from "react-intersection-observer";
+import GameCardSkeleton from "./GameCardSkeleton";
 
-interface Props {
-    gameQuery: GameQuery;
-}
-
-const GameGrid = ({ gameQuery }: Props) => {
+const GameGrid = () => {
     const {
         data,
         error,
@@ -19,7 +14,7 @@ const GameGrid = ({ gameQuery }: Props) => {
         hasNextPage,
         fetchNextPage,
         isFetchingNextPage,
-    } = useGames(gameQuery);
+    } = useGames();
     const skeletons = [1, 2, 3, 4];
 
     if (error) return <Alert status="error">{error.message}</Alert>;

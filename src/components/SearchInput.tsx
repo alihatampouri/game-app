@@ -1,12 +1,11 @@
 import { Input, InputGroup, InputLeftElement, Spinner } from "@chakra-ui/react";
 import { ChangeEvent, useState } from "react";
 import { BsSearch } from "react-icons/bs";
+import useGameQueryStore from "../store";
 
-interface Props {
-    onSearch: (searchText: string) => void;
-}
+const SearchInput = () => {
+    const setSearch = useGameQueryStore((s) => s.setSearch);
 
-const SearchInput = ({ onSearch }: Props) => {
     const [inputTimer, setInputTimer] = useState<number | null>(null);
     const [isLoading, setLoading] = useState(false);
 
@@ -15,7 +14,7 @@ const SearchInput = ({ onSearch }: Props) => {
 
         const timer = setInterval(() => {
             const value = event.target.value;
-            onSearch(value);
+            setSearch(value);
 
             clearInterval(timer);
             setLoading(false);
